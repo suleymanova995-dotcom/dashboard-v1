@@ -1,0 +1,94 @@
+.kpi {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-6);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.iconWrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-brand);
+}
+
+.amount {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-secondary);
+}
+
+/*
+ * Trend text stays in color-text-primary: green-600 / red-500 fall below
+ * 4.5:1 as text on light surfaces, so color lives in the icon and tint only.
+ */
+.trend {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.trendGood {
+  background: color-mix(in srgb, var(--color-success) 14%, transparent);
+}
+
+.trendGood svg {
+  color: var(--green-600);
+}
+
+.trendBad {
+  background: color-mix(in srgb, var(--color-error) 12%, transparent);
+}
+
+.trendBad svg {
+  color: var(--red-600);
+}
+
+@media (prefers-color-scheme: dark) {
+  .trendGood svg {
+    color: var(--color-success);
+  }
+
+  .trendBad svg {
+    color: var(--color-error);
+  }
+}

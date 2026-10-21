@@ -1,0 +1,118 @@
+.list {
+  list-style: none;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--color-border-secondary);
+}
+
+.item:first-child {
+  padding-top: 0;
+}
+
+.item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.bankIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-brand);
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  flex: 1;
+  min-width: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.name {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+}
+
+.iban {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-secondary);
+}
+
+.balance {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.sync {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-secondary);
+}
+
+.pending {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+  margin-top: var(--space-1);
+}
+
+/* Button — primary, size sm */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-width: 120px;
+  height: 32px;
+  padding: 0 var(--space-3);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text-on-primary);
+  background: var(--color-interactive-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--duration-normal) var(--ease-in-out);
+}
+
+.button:hover {
+  background: var(--color-interactive-primary-hover);
+}
+
+.button:active {
+  background: var(--color-interactive-primary-active);
+}
+
+@media (max-width: 639px) {
+  .button {
+    width: 100%;
+  }
+}
