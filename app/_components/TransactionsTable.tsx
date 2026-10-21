@@ -27,15 +27,16 @@ export function TransactionsTable({ transactions }: { transactions: Transaction[
         <table className={styles.table}>
           <thead>
             <tr>
-              <th scope="col">Tarix</th>
-              <th scope="col">Kontragent</th>
               <th scope="col" className={styles.hideSm}>
-                Kateqoriya
+                Tarix
               </th>
+              <th scope="col">Kontragent</th>
               <th scope="col" className={styles.hideSm}>
                 ID
               </th>
-              <th scope="col">Status</th>
+              <th scope="col" className={styles.hideSm}>
+                Status
+              </th>
               <th scope="col" className={styles.alignEnd}>
                 Məbləğ
               </th>
@@ -49,7 +50,7 @@ export function TransactionsTable({ transactions }: { transactions: Transaction[
 
               return (
                 <tr key={tx.id}>
-                  <td className={styles.date}>
+                  <td className={`${styles.date} ${styles.hideSm}`}>
                     <time dateTime={tx.date}>{formatDate(tx.date)}</time>
                   </td>
                   <td>
@@ -60,17 +61,33 @@ export function TransactionsTable({ transactions }: { transactions: Transaction[
                       >
                         <DirectionIcon size={16} strokeWidth={1.5} />
                       </span>
-                      <span>{tx.counterparty}</span>
+                      <div className={styles.counterpartyText}>
+                        <span className={styles.counterpartyName}>{tx.counterparty}</span>
+                        <span className={styles.meta}>
+                          <span className={styles.showSm}>
+                            <time dateTime={tx.date}>{formatDate(tx.date)}</time> ·{" "}
+                          </span>
+                          {tx.category}
+                        </span>
+                      </div>
                     </div>
                   </td>
-                  <td className={`${styles.muted} ${styles.hideSm}`}>{tx.category}</td>
                   <td className={`${styles.mono} ${styles.hideSm}`}>{tx.id}</td>
-                  <td>
+                  <td className={styles.hideSm}>
                     <StatusBadge tone={status.tone}>{status.label}</StatusBadge>
                   </td>
-                  <td className={`${styles.amount} ${styles.alignEnd}`}>
-                    <span className="visually-hidden">{incoming ? "Daxilolma" : "Ödəniş"}: </span>
-                    {formatSignedMoney(tx.amount)}
+                  <td className={styles.alignEnd}>
+                    <div className={styles.amountCell}>
+                      <span className={styles.amount}>
+                        <span className="visually-hidden">
+                          {incoming ? "Daxilolma" : "Ödəniş"}:{" "}
+                        </span>
+                        {formatSignedMoney(tx.amount)}
+                      </span>
+                      <span className={styles.showSm}>
+                        <StatusBadge tone={status.tone}>{status.label}</StatusBadge>
+                      </span>
+                    </div>
                   </td>
                 </tr>
               );

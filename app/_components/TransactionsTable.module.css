@@ -10,8 +10,24 @@
   line-height: 20px;
 }
 
+.table th,
+.table td {
+  padding-inline: var(--space-3);
+}
+
+/* Outer cells line up with the card header padding */
+.table th:first-child,
+.table td:first-child {
+  padding-left: var(--space-6);
+}
+
+.table th:last-child,
+.table td:last-child {
+  padding-right: var(--space-6);
+}
+
 .table th {
-  padding: var(--space-3) var(--space-6);
+  padding-block: var(--space-3);
   font-size: 12px;
   line-height: 16px;
   font-weight: 500;
@@ -22,7 +38,7 @@
 }
 
 .table td {
-  padding: var(--space-4) var(--space-6);
+  padding-block: var(--space-4);
   border-bottom: 1px solid var(--color-border-secondary);
   vertical-align: middle;
 }
@@ -48,8 +64,23 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  min-width: 180px;
+  min-width: 160px;
+}
+
+.counterpartyText {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.counterpartyName {
   font-weight: 500;
+}
+
+.meta {
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-secondary);
 }
 
 .direction {
@@ -68,15 +99,18 @@
   color: var(--color-text-brand);
 }
 
-.muted {
-  color: var(--color-text-secondary);
-}
-
 .mono {
   font-family: var(--font-mono);
   font-size: 14px;
   color: var(--color-text-secondary);
   white-space: nowrap;
+}
+
+.amountCell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-1);
 }
 
 .amount {
@@ -85,17 +119,35 @@
   white-space: nowrap;
 }
 
-.alignEnd {
-  text-align: right !important;
+.table .alignEnd {
+  text-align: right;
 }
 
+.showSm {
+  display: none;
+}
+
+/* Mobile: date moves under the counterparty, status under the amount */
 @media (max-width: 767px) {
   .hideSm {
     display: none;
   }
 
-  .table th,
-  .table td {
-    padding-inline: var(--space-4);
+  .showSm {
+    display: inline;
+  }
+
+  .table th:first-child,
+  .table td:first-child {
+    padding-left: var(--space-4);
+  }
+
+  .table th:last-child,
+  .table td:last-child {
+    padding-right: var(--space-4);
+  }
+
+  .counterparty {
+    min-width: 0;
   }
 }
