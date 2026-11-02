@@ -43,7 +43,7 @@
   --color-text-on-primary: var(--white);
   --color-border-primary: var(--gray-200);
   --color-border-secondary: var(--gray-100);
-  --color-border-focus: var(--teal-500);
+  --color-border-focus: var(--teal-600);
   --color-interactive-primary: var(--teal-600);
   --color-interactive-primary-hover: var(--teal-700);
   --color-interactive-primary-active: var(--teal-800);

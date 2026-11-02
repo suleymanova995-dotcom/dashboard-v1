@@ -46,16 +46,15 @@ function TrendBadge({ trend }: { trend: NonNullable<Kpi["trend"]> }) {
   const isUp = trend.change >= 0;
   const isGood = isUp === trend.increaseIsPositive;
   const Arrow = isUp ? ArrowUpRight : ArrowDownRight;
-  const label = `${isUp ? "Artım" : "Azalma"} ${formatPercent(Math.abs(trend.change))}%`;
 
   return (
-    <span
-      className={`${styles.trend} ${isGood ? styles.trendGood : styles.trendBad}`}
-      aria-label={label}
-    >
+    <span className={`${styles.trend} ${isGood ? styles.trendGood : styles.trendBad}`}>
       <Arrow size={16} strokeWidth={1.5} aria-hidden="true" />
-      {isUp ? "+" : "−"}
-      {formatPercent(Math.abs(trend.change))}%
+      <span className="visually-hidden">{isUp ? "Artım" : "Azalma"} </span>
+      <span>
+        <span aria-hidden="true">{isUp ? "+" : "−"}</span>
+        {formatPercent(Math.abs(trend.change))}%
+      </span>
     </span>
   );
 }

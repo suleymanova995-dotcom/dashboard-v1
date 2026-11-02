@@ -55,7 +55,7 @@ hələ divara vurulmayıb.
 | teal-200 | #99F6E4 | 153,246,228 | Selected tint |
 | teal-300 | #5EEAD4 | 94,234,212 | Subtle accents |
 | teal-400 | #2DD4BF | 45,212,191 | Interactive on dark mode |
-| teal-500 | #14B8A6 | 20,184,166 | Focus rings, info, links|
+| teal-500 | #14B8A6 | 20,184,166 | Info, brand surface on dark |
 | teal-600 | #0F766E | 15,118,110 | Primary brand, CTAs |
 | teal-700 | #115E59 | 17,94,89 | Primary hover |
 | teal-800 | #134E4A | 19,78,74 | Primary pressed |
@@ -87,7 +87,7 @@ gray-900 durur, amma komponent bunu bilmir, sadəcə token adını çağırır.
 | color-text-brand | {teal-600} | {teal-400} | Links, branded text |
 | color-border-primary | {gray-200} | {gray-700} | Default borders |
 | color-border-secondary | {gray-100} | {gray-800} | Subtle dividers |
-| color-border-focus | {teal-500} | {teal-400} | Focus rings |
+| color-border-focus | {teal-600} | {teal-400} | Focus rings |
 | color-interactive-primary | {teal-600} | {teal-400} | Primary buttons, links |
 | color-interactive-primary-hover | {teal-700} | {teal-300} | Primary hover |
 | color-interactive-secondary | {gray-100} | {gray-700} | Secondary buttons |
@@ -178,7 +178,7 @@ gray-50, gray-100) **normal ölçülü mətn** kimi istifadə olunmamalıdır:
 | Primitive | white (#FFFFFF) üzərində | gray-50 (#F8FAFC) üzərində | gray-100 (#F1F5F9) üzərində | Hansı token-lər təsirlənir |
 |-----------|--------------------------|----------------------------|-----------------------------|----------------------------|
 | gray-400 (#94A3B8) | 2.56:1 **Keçmir** | 2.45:1 **Keçmir** | 2.34:1 **Keçmir** | — (light mode-da mətn token-i kimi istifadə olunmur) |
-| teal-500 (#14B8A6) | 2.49:1 **Keçmir** | 2.38:1 **Keçmir** | 2.27:1 **Keçmir** | color-info, color-border-focus (light) |
+| teal-500 (#14B8A6) | 2.49:1 **Keçmir** | 2.38:1 **Keçmir** | 2.27:1 **Keçmir** | color-info (light) |
 | green-500 (#22C55E) | 2.28:1 **Keçmir** | 2.18:1 **Keçmir** | 2.08:1 **Keçmir** | color-success |
 | amber-500 (#F59E0B) | 2.15:1 **Keçmir** | 2.05:1 **Keçmir** | 1.96:1 **Keçmir** | color-warning |
 
@@ -217,7 +217,7 @@ tələb edir. Light fonda (white):
 
 | Element | Rəng | Nisbət | 3:1 |
 |---------|------|--------|-----|
-| Fokus halqası (color-border-focus) | teal-500 | 2.49:1 | **Keçmir** |
+| Fokus halqası (color-border-focus) | teal-600 | 5.47:1 | Keçir |
 | Info ikonu (color-info) | teal-500 | 2.49:1 | **Keçmir** |
 | Success ikonu (color-success) | green-500 | 2.28:1 | **Keçmir** |
 | Warning ikonu (color-warning) | amber-500 | 2.15:1 | **Keçmir** |
@@ -236,7 +236,6 @@ Placeholder mətn isə azad **deyil**: oxunmalı olan hər mətn 4.5:1 tələb e
 Aşağıdakı token istifadələri hazırda AA-nı keçmir və həll olunana qədər
 açıq məsələ kimi qalır:
 - Input "Error text: {color-error}" light mode-da red-500 on white: 3.76:1.
-- Light mode fokus halqası (teal-500 on white): 2.49:1, 3:1 tələbindən aşağı.
 
 Qayda: yeni rəng kombinasiyası əlavə edəndə əvvəlcə kontrastı yoxla,
 sonra istifadə et. Kontrast normal mətn üçün 4.5:1-dən, böyük mətn üçün
