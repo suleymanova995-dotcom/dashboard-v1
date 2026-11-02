@@ -1,4 +1,7 @@
 ```markdown
+**Version:** 1.1.0
+**Last Updated:** 2026-11-02
+
 ## 1. Brand Overview
 
 ### Mission
@@ -96,23 +99,115 @@ gray-900 durur, amma komponent bunu bilmir, sadəcə token adını çağırır.
 
 ```markdown
 ### Accessibility
-Bütün mətn WCAG 2.2 AA kontrast nisbətini keçir. Aşağıdakı əsas
-kombinasiyalar yoxlanılıb:
-Light mode
-- color-text-primary on color-bg-primary: **17.8:1**, keçir
-- color-text-secondary on color-bg-primary: **4.76:1**, keçir
-- color-interactive-primary on color-bg-primary: **5.1:1**, keçir
-- color-text-inverse on color-bg-inverse: **17.8:1**, keçir
+Palitradakı bütün kombinasiyalar WCAG 2.2 AA-nı keçmir. Uyğunluq rəngin
+özündən deyil, **rəng + fon + istifadə növü** kombinasiyasından asılıdır.
+Ona görə rənglər üç qrupa bölünür: mətn rəngləri, qeyri-mətn UI
+elementləri (ikon, fokus halqası, sərhəd) və dekorativ rənglər/fon tintləri.
 
-Dark mode
-- color-text-primary on color-bg-primary: **16.8:1**, keçir
-- color-text-secondary on color-bg-primary: **8.4:1**, keçir
-- color-interactive-primary on color-bg-primary: 8.8:1, keçir
-- color-text-inverse on color-bg-inverse: 16.8:1, keçir
+#### WCAG 2.2 AA hədləri
+| Növ | Minimum kontrast | WCAG kriteriyası |
+|-----|------------------|------------------|
+| Normal mətn | **4.5:1** | 1.4.3 Contrast (Minimum) |
+| Böyük mətn (≥ 24px regular və ya ≥ 18.66px bold) | **3:1** | 1.4.3 Contrast (Minimum) |
+| Mənalı ikonlar, fokus halqası, input sərhədi | **3:1** | 1.4.11 Non-text Contrast |
+| Dekorativ elementlər, fon tintləri, disabled komponentlər | tələb yoxdur | — |
+
+Type Scale-də böyük mətn sayılan token-lər: `text-xl` (24px/600) və
+yuxarısı. `text-lg` (18px/500) bold deyil, ona görə **normal mətn** kimi
+4.5:1 tələb edir.
+
+#### Hesablama metodu
+Bütün nisbətlər WCAG relative luminance düsturu ilə, Primitive Palette-dəki
+hex dəyərlərdən müstəqil hesablanıb və 2 onluq rəqəmə yuvarlaqlaşdırılıb.
+Şəffaflıq (opacity) və ya qarışıq fon nəzərə alınmayıb.
+
+#### Mətn kombinasiyaları: Light mode
+| Mətn | Fon | Nisbət | Normal mətn (4.5:1) | Böyük mətn (3:1) |
+|------|-----|--------|---------------------|------------------|
+| color-text-primary (gray-900) | color-bg-primary (white) | 17.85:1 | Keçir | Keçir |
+| color-text-primary (gray-900) | color-bg-secondary (gray-50) | 17.06:1 | Keçir | Keçir |
+| color-text-secondary (gray-500) | color-bg-primary (white) | 4.76:1 | Keçir | Keçir |
+| color-text-secondary (gray-500) | color-bg-secondary (gray-50) | 4.55:1 | Keçir | Keçir |
+| color-text-secondary (gray-500) | color-bg-tertiary (gray-100) | 4.34:1 | **Keçmir** | Keçir |
+| color-text-brand / color-interactive-primary (teal-600) | color-bg-primary (white) | 5.47:1 | Keçir | Keçir |
+| color-text-brand / color-interactive-primary (teal-600) | color-bg-secondary (gray-50) | 5.23:1 | Keçir | Keçir |
+| color-interactive-primary-hover (teal-700) | color-bg-primary (white) | 7.58:1 | Keçir | Keçir |
+| white | color-bg-brand (teal-600) | 5.47:1 | Keçir | Keçir |
+| color-text-inverse (white) | color-bg-inverse (gray-900) | 17.85:1 | Keçir | Keçir |
+| color-text-tertiary (gray-400) | color-bg-primary (white) | 2.56:1 | **Keçmir** | **Keçmir** |
+| color-info (teal-500) | color-bg-primary (white) | 2.49:1 | **Keçmir** | **Keçmir** |
+| color-success (green-500) | color-bg-primary (white) | 2.28:1 | **Keçmir** | **Keçmir** |
+| color-warning (amber-500) | color-bg-primary (white) | 2.15:1 | **Keçmir** | **Keçmir** |
+| color-error (red-500) | color-bg-primary (white) | 3.76:1 | **Keçmir** | Keçir |
+| green-600 | color-bg-primary (white) | 3.30:1 | **Keçmir** | Keçir |
+| red-600 | color-bg-primary (white) | 4.83:1 | Keçir | Keçir |
+
+#### Mətn kombinasiyaları: Dark mode
+| Mətn | Fon | Nisbət | Normal mətn (4.5:1) | Böyük mətn (3:1) |
+|------|-----|--------|---------------------|------------------|
+| color-text-primary (gray-50) | color-bg-primary (gray-900) | 17.06:1 | Keçir | Keçir |
+| color-text-primary (gray-50) | color-bg-secondary (gray-800) | 13.98:1 | Keçir | Keçir |
+| color-text-secondary (gray-400) | color-bg-primary (gray-900) | 6.96:1 | Keçir | Keçir |
+| color-text-secondary (gray-400) | color-bg-secondary (gray-800) | 5.71:1 | Keçir | Keçir |
+| color-text-brand / color-interactive-primary (teal-400) | color-bg-primary (gray-900) | 9.59:1 | Keçir | Keçir |
+| color-text-brand / color-interactive-primary (teal-400) | color-bg-secondary (gray-800) | 7.86:1 | Keçir | Keçir |
+| color-text-inverse (gray-900) | color-bg-inverse (gray-50) | 17.06:1 | Keçir | Keçir |
+| gray-900 | color-bg-brand (teal-500) | 7.17:1 | Keçir | Keçir |
+| color-success (green-500) | color-bg-primary (gray-900) | 7.83:1 | Keçir | Keçir |
+| color-warning (amber-500) | color-bg-primary (gray-900) | 8.31:1 | Keçir | Keçir |
+| color-error (red-500) | color-bg-primary (gray-900) | 4.74:1 | Keçir | Keçir |
+| color-error (red-500) | color-bg-secondary (gray-800) | 3.89:1 | **Keçmir** | Keçir |
+| color-text-tertiary (gray-500) | color-bg-primary (gray-900) | 3.75:1 | **Keçmir** | Keçir |
+| color-text-tertiary (gray-500) | color-bg-secondary (gray-800) | 3.07:1 | **Keçmir** | Keçir |
+| white | color-bg-brand (teal-500) | 2.49:1 | **Keçmir** | **Keçmir** |
+
+#### Light fonda normal mətn kimi qadağandır
+Aşağıdakı primitive-lər hazırkı kombinasiyalarında light fonda (white,
+gray-50, gray-100) **normal ölçülü mətn** kimi istifadə olunmamalıdır:
+
+| Primitive | white (#FFFFFF) üzərində | gray-50 (#F8FAFC) üzərində | gray-100 (#F1F5F9) üzərində | Hansı token-lər təsirlənir |
+|-----------|--------------------------|----------------------------|-----------------------------|----------------------------|
+| gray-400 (#94A3B8) | 2.56:1 **Keçmir** | 2.45:1 **Keçmir** | 2.34:1 **Keçmir** | color-text-tertiary (light) |
+| teal-500 (#14B8A6) | 2.49:1 **Keçmir** | 2.38:1 **Keçmir** | 2.27:1 **Keçmir** | color-info, color-border-focus (light) |
+| green-500 (#22C55E) | 2.28:1 **Keçmir** | 2.18:1 **Keçmir** | 2.08:1 **Keçmir** | color-success |
+| amber-500 (#F59E0B) | 2.15:1 **Keçmir** | 2.05:1 **Keçmir** | 1.96:1 **Keçmir** | color-warning |
+
+Bu dörd rəng light fonda böyük mətn üçün də 3:1-ə çatmır. Status
+mesajlarında rəngi mətnə deyil, ikona/badge fonuna ver və mətni
+color-text-primary ilə yaz. Mənanı yalnız rənglə ötürmə (WCAG 1.4.1).
+
+#### Qeyri-mətn elementləri (ikon, fokus halqası, sərhəd)
+Məna daşıyan ikonlar və UI vəziyyət göstəriciləri fonla **3:1** kontrast
+tələb edir. Light fonda (white):
+
+| Element | Rəng | Nisbət | 3:1 |
+|---------|------|--------|-----|
+| Fokus halqası (color-border-focus) | teal-500 | 2.49:1 | **Keçmir** |
+| Info ikonu (color-info) | teal-500 | 2.49:1 | **Keçmir** |
+| Success ikonu (color-success) | green-500 | 2.28:1 | **Keçmir** |
+| Warning ikonu (color-warning) | amber-500 | 2.15:1 | **Keçmir** |
+| Error ikonu (color-error) | red-500 | 3.76:1 | Keçir |
+| Positive trend ikonu | green-600 | 3.30:1 | Keçir |
+| Brand ikonu | teal-600 | 5.47:1 | Keçir |
+
+Dark mode-da (gray-900 fonda) fokus halqası teal-400 9.59:1, status
+rəngləri green-500 7.83:1, amber-500 8.31:1, red-500 4.74:1 ilə 3:1-i keçir.
+
+Dekorativ ikonlar (`aria-hidden="true"`), fon tintləri (teal-50…teal-200,
+gray-50, gray-100) və disabled komponentlər kontrast tələbindən azaddır.
+Placeholder mətn isə azad **deyil**: oxunmalı olan hər mətn 4.5:1 tələb edir.
+
+#### Məlum uyğunsuzluqlar
+Aşağıdakı token istifadələri hazırda AA-nı keçmir və həll olunana qədər
+açıq məsələ kimi qalır:
+- Input "Error text: {color-error}" light mode-da red-500 on white: 3.76:1.
+- Placeholder (color-text-tertiary): light 2.56:1, dark 3.75:1.
+- Light mode fokus halqası (teal-500 on white): 2.49:1, 3:1 tələbindən aşağı.
+- color-text-secondary on color-bg-tertiary (light): 4.34:1.
 
 Qayda: yeni rəng kombinasiyası əlavə edəndə əvvəlcə kontrastı yoxla,
-sonra istifadə et. Kontrast 4.5:1-dən aşağıdırsa, o kombinasiya mətn
-üçün qadağandır.
+sonra istifadə et. Kontrast normal mətn üçün 4.5:1-dən, böyük mətn üçün
+3:1-dən aşağıdırsa, o kombinasiya həmin mətn ölçüsü üçün qadağandır.
 
 ### Theming Anchor
 
