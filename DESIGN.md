@@ -50,16 +50,16 @@ hələ divara vurulmayıb.
 | gray-700 | #334155 | 51,65,85 | Strong body on light |
 | gray-800 | #1E293B | 30,41,59 | Dark surfaces |
 | gray-900 | #0F172A | 15,23,42 | Primary text, darkest surface |
-| teal-50 | #**F0FDFA** | 240,253,250 | Lightest teal tint |
-| teal-100 | #**CCFBF1** | 204,251,241 | Hover backgrounds |
-| teal-200 | #**99F6E4** | 153,246,228 | Selected tint |
-| teal-300 | #**5EEAD4** | 94,234,212 | Subtle accents |
-| teal-400 | #**2DD4BF** | 45,212,191 | Interactive on dark mode |
-| teal-500 | #**14B8A6** | 20,184,166 | Focus rings, info, links|
-| teal-600 | #**0F766E** | 15,118,110 | Primary brand, CTAs |
-| teal-700 | #**115E59** | 17,94,89 | Primary hover |
-| teal-800 | #**134E4A** | 19,78,74 | Primary pressed |
-| teal-900 | #**042F2E** | 4,47,46 | Deepest brand shade |
+| teal-50 | #F0FDFA | 240,253,250 | Lightest teal tint |
+| teal-100 | #CCFBF1 | 204,251,241 | Hover backgrounds |
+| teal-200 | #99F6E4 | 153,246,228 | Selected tint |
+| teal-300 | #5EEAD4 | 94,234,212 | Subtle accents |
+| teal-400 | #2DD4BF | 45,212,191 | Interactive on dark mode |
+| teal-500 | #14B8A6 | 20,184,166 | Focus rings, info, links|
+| teal-600 | #0F766E | 15,118,110 | Primary brand, CTAs |
+| teal-700 | #115E59 | 17,94,89 | Primary hover |
+| teal-800 | #134E4A | 19,78,74 | Primary pressed |
+| teal-900 | #042F2E | 4,47,46 | Deepest brand shade |
 | green-500 | #22C55E | 34,197,94 | Success states |
 | green-600 | #16A34A | 22,163,74 | Success hover, positive trend |
 | red-500 | #EF4444 | 239,68,68 | Error states, destructive |
