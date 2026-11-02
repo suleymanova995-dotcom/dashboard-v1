@@ -44,8 +44,8 @@ hələ divara vurulmayıb.
 | gray-100 | #F1F5F9 | 241,245,249 | Subtle fills, code blocks |
 | gray-200 | #E2E8F0 | 226,232,240 | Default borders |
 | gray-300 | #CBD5E1 | 203,213,225 | Disabled borders |
-| gray-400 | #94A3B8 | 148,163,184 | Placeholder text |
-| gray-500 | #64748B | 100,116,139 | Secondary text |
+| gray-400 | #94A3B8 | 148,163,184 | Secondary and tertiary text on dark |
+| gray-500 | #64748B | 100,116,139 | Secondary and tertiary text on light |
 | gray-600 | #475569 | 71,85,105 | Muted headings |
 | gray-700 | #334155 | 51,65,85 | Strong body on light |
 | gray-800 | #1E293B | 30,41,59 | Dark surfaces |
@@ -82,7 +82,7 @@ gray-900 durur, amma komponent bunu bilmir, sadəcə token adını çağırır.
 | color-bg-brand | {teal-600} | {teal-500} | Brand-colored surfaces |
 | color-text-primary | {gray-900} | {gray-50} | Headings, body text |
 | color-text-secondary | {gray-500} | {gray-400} | Descriptions, captions |
-| color-text-tertiary | {gray-400} | {gray-500} | Placeholders, disabled |
+| color-text-tertiary | {gray-500} | {gray-400} | Placeholders, disabled. Only on color-bg-primary or color-bg-secondary; never on color-bg-tertiary |
 | color-text-inverse | {white} | {gray-900} | Text on inverse surfaces |
 | color-text-brand | {teal-600} | {teal-400} | Links, branded text |
 | color-border-primary | {gray-200} | {gray-700} | Default borders |
@@ -134,13 +134,18 @@ hex dəyərlərdən müstəqil hesablanıb və 2 onluq rəqəmə yuvarlaqlaşdı
 | color-interactive-primary-hover (teal-700) | color-bg-primary (white) | 7.58:1 | Keçir | Keçir |
 | white | color-bg-brand (teal-600) | 5.47:1 | Keçir | Keçir |
 | color-text-inverse (white) | color-bg-inverse (gray-900) | 17.85:1 | Keçir | Keçir |
-| color-text-tertiary (gray-400) | color-bg-primary (white) | 2.56:1 | **Keçmir** | **Keçmir** |
+| color-text-tertiary (gray-500) | color-bg-primary (white) | 4.76:1 | Keçir | Keçir |
+| color-text-tertiary (gray-500) | color-bg-secondary (gray-50) | 4.55:1 | Keçir | Keçir |
+| color-text-tertiary (gray-500) | color-bg-tertiary (gray-100) | 4.34:1 | **Keçmir — qadağandır** | Keçir |
 | color-info (teal-500) | color-bg-primary (white) | 2.49:1 | **Keçmir** | **Keçmir** |
 | color-success (green-500) | color-bg-primary (white) | 2.28:1 | **Keçmir** | **Keçmir** |
 | color-warning (amber-500) | color-bg-primary (white) | 2.15:1 | **Keçmir** | **Keçmir** |
 | color-error (red-500) | color-bg-primary (white) | 3.76:1 | **Keçmir** | Keçir |
 | green-600 | color-bg-primary (white) | 3.30:1 | **Keçmir** | Keçir |
 | red-600 | color-bg-primary (white) | 4.83:1 | Keçir | Keçir |
+
+"Qadağandır" ilə işarələnən sətirlər icazəli kombinasiya deyil: həmin token
+bu fonda istifadə olunmur (bax: Qadağan token kombinasiyaları).
 
 #### Mətn kombinasiyaları: Dark mode
 | Mətn | Fon | Nisbət | Normal mətn (4.5:1) | Böyük mətn (3:1) |
@@ -157,9 +162,13 @@ hex dəyərlərdən müstəqil hesablanıb və 2 onluq rəqəmə yuvarlaqlaşdı
 | color-warning (amber-500) | color-bg-primary (gray-900) | 8.31:1 | Keçir | Keçir |
 | color-error (red-500) | color-bg-primary (gray-900) | 4.74:1 | Keçir | Keçir |
 | color-error (red-500) | color-bg-secondary (gray-800) | 3.89:1 | **Keçmir** | Keçir |
-| color-text-tertiary (gray-500) | color-bg-primary (gray-900) | 3.75:1 | **Keçmir** | Keçir |
-| color-text-tertiary (gray-500) | color-bg-secondary (gray-800) | 3.07:1 | **Keçmir** | Keçir |
+| color-text-tertiary (gray-400) | color-bg-primary (gray-900) | 6.96:1 | Keçir | Keçir |
+| color-text-tertiary (gray-400) | color-bg-secondary (gray-800) | 5.71:1 | Keçir | Keçir |
+| color-text-tertiary (gray-400) | color-bg-tertiary (gray-700) | 4.04:1 | **Keçmir — qadağandır** | Keçir |
 | white | color-bg-brand (teal-500) | 2.49:1 | **Keçmir** | **Keçmir** |
+
+"Qadağandır" ilə işarələnən sətirlər icazəli kombinasiya deyil: həmin token
+bu fonda istifadə olunmur (bax: Qadağan token kombinasiyaları).
 
 #### Light fonda normal mətn kimi qadağandır
 Aşağıdakı primitive-lər hazırkı kombinasiyalarında light fonda (white,
@@ -167,7 +176,7 @@ gray-50, gray-100) **normal ölçülü mətn** kimi istifadə olunmamalıdır:
 
 | Primitive | white (#FFFFFF) üzərində | gray-50 (#F8FAFC) üzərində | gray-100 (#F1F5F9) üzərində | Hansı token-lər təsirlənir |
 |-----------|--------------------------|----------------------------|-----------------------------|----------------------------|
-| gray-400 (#94A3B8) | 2.56:1 **Keçmir** | 2.45:1 **Keçmir** | 2.34:1 **Keçmir** | color-text-tertiary (light) |
+| gray-400 (#94A3B8) | 2.56:1 **Keçmir** | 2.45:1 **Keçmir** | 2.34:1 **Keçmir** | — (light mode-da mətn token-i kimi istifadə olunmur) |
 | teal-500 (#14B8A6) | 2.49:1 **Keçmir** | 2.38:1 **Keçmir** | 2.27:1 **Keçmir** | color-info, color-border-focus (light) |
 | green-500 (#22C55E) | 2.28:1 **Keçmir** | 2.18:1 **Keçmir** | 2.08:1 **Keçmir** | color-success |
 | amber-500 (#F59E0B) | 2.15:1 **Keçmir** | 2.05:1 **Keçmir** | 1.96:1 **Keçmir** | color-warning |
@@ -175,6 +184,20 @@ gray-50, gray-100) **normal ölçülü mətn** kimi istifadə olunmamalıdır:
 Bu dörd rəng light fonda böyük mətn üçün də 3:1-ə çatmır. Status
 mesajlarında rəngi mətnə deyil, ikona/badge fonuna ver və mətni
 color-text-primary ilə yaz. Mənanı yalnız rənglə ötürmə (WCAG 1.4.1).
+
+#### Qadağan token kombinasiyaları
+color-text-tertiary yalnız color-bg-primary və color-bg-secondary üzərində
+istifadə olunur. color-bg-tertiary üzərində istifadəsi hər iki mode-da
+**qadağandır**, çünki normal mətn üçün 4.5:1-ə çatmır:
+
+| Mətn | Fon | Light | Dark | Status |
+|------|-----|-------|------|--------|
+| color-text-tertiary | color-bg-primary | 4.76:1 (gray-500 on white) | 6.96:1 (gray-400 on gray-900) | İcazəlidir |
+| color-text-tertiary | color-bg-secondary | 4.55:1 (gray-500 on gray-50) | 5.71:1 (gray-400 on gray-800) | İcazəlidir |
+| color-text-tertiary | color-bg-tertiary | 4.34:1 (gray-500 on gray-100) | 4.04:1 (gray-400 on gray-700) | **Qadağandır** |
+
+color-bg-tertiary üzərində köməkçi mətn lazımdırsa, color-text-primary
+istifadə et və ya mətni color-bg-primary / color-bg-secondary səthinə köçür.
 
 #### Qeyri-mətn elementləri (ikon, fokus halqası, sərhəd)
 Məna daşıyan ikonlar və UI vəziyyət göstəriciləri fonla **3:1** kontrast
@@ -201,7 +224,6 @@ Placeholder mətn isə azad **deyil**: oxunmalı olan hər mətn 4.5:1 tələb e
 Aşağıdakı token istifadələri hazırda AA-nı keçmir və həll olunana qədər
 açıq məsələ kimi qalır:
 - Input "Error text: {color-error}" light mode-da red-500 on white: 3.76:1.
-- Placeholder (color-text-tertiary): light 2.56:1, dark 3.75:1.
 - Light mode fokus halqası (teal-500 on white): 2.49:1, 3:1 tələbindən aşağı.
 - color-text-secondary on color-bg-tertiary (light): 4.34:1.
 

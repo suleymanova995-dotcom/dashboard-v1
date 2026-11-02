@@ -37,7 +37,7 @@
   --color-bg-brand: var(--teal-600);
   --color-text-primary: var(--gray-900);
   --color-text-secondary: var(--gray-500);
-  --color-text-tertiary: var(--gray-400);
+  --color-text-tertiary: var(--gray-500);
   --color-text-inverse: var(--white);
   --color-text-brand: var(--teal-600);
   --color-text-on-primary: var(--white);
@@ -101,7 +101,7 @@
     --color-bg-brand: var(--teal-500);
     --color-text-primary: var(--gray-50);
     --color-text-secondary: var(--gray-400);
-    --color-text-tertiary: var(--gray-500);
+    --color-text-tertiary: var(--gray-400);
     --color-text-inverse: var(--gray-900);
     --color-text-brand: var(--teal-400);
     --color-text-on-primary: var(--gray-900);
