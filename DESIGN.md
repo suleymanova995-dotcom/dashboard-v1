@@ -81,7 +81,7 @@ gray-900 durur, amma komponent bunu bilmir, sadəcə token adını çağırır.
 | color-bg-inverse | {gray-900} | {gray-50} | Contrast sections, tooltips |
 | color-bg-brand | {teal-600} | {teal-500} | Brand-colored surfaces |
 | color-text-primary | {gray-900} | {gray-50} | Headings, body text |
-| color-text-secondary | {gray-500} | {gray-400} | Descriptions, captions |
+| color-text-secondary | {gray-500} | {gray-400} | Descriptions, captions. Text only on color-bg-primary or color-bg-secondary; never as text on color-bg-tertiary. Non-text elements (icons) need 3:1 |
 | color-text-tertiary | {gray-500} | {gray-400} | Placeholders, disabled. Only on color-bg-primary or color-bg-secondary; never on color-bg-tertiary |
 | color-text-inverse | {white} | {gray-900} | Text on inverse surfaces |
 | color-text-brand | {teal-600} | {teal-400} | Links, branded text |
@@ -128,7 +128,7 @@ hex dəyərlərdən müstəqil hesablanıb və 2 onluq rəqəmə yuvarlaqlaşdı
 | color-text-primary (gray-900) | color-bg-secondary (gray-50) | 17.06:1 | Keçir | Keçir |
 | color-text-secondary (gray-500) | color-bg-primary (white) | 4.76:1 | Keçir | Keçir |
 | color-text-secondary (gray-500) | color-bg-secondary (gray-50) | 4.55:1 | Keçir | Keçir |
-| color-text-secondary (gray-500) | color-bg-tertiary (gray-100) | 4.34:1 | **Keçmir** | Keçir |
+| color-text-secondary (gray-500) | color-bg-tertiary (gray-100) | 4.34:1 | **Keçmir — qadağandır** | Keçir |
 | color-text-brand / color-interactive-primary (teal-600) | color-bg-primary (white) | 5.47:1 | Keçir | Keçir |
 | color-text-brand / color-interactive-primary (teal-600) | color-bg-secondary (gray-50) | 5.23:1 | Keçir | Keçir |
 | color-interactive-primary-hover (teal-700) | color-bg-primary (white) | 7.58:1 | Keçir | Keçir |
@@ -154,6 +154,7 @@ bu fonda istifadə olunmur (bax: Qadağan token kombinasiyaları).
 | color-text-primary (gray-50) | color-bg-secondary (gray-800) | 13.98:1 | Keçir | Keçir |
 | color-text-secondary (gray-400) | color-bg-primary (gray-900) | 6.96:1 | Keçir | Keçir |
 | color-text-secondary (gray-400) | color-bg-secondary (gray-800) | 5.71:1 | Keçir | Keçir |
+| color-text-secondary (gray-400) | color-bg-tertiary (gray-700) | 4.04:1 | **Keçmir — qadağandır** | Keçir |
 | color-text-brand / color-interactive-primary (teal-400) | color-bg-primary (gray-900) | 9.59:1 | Keçir | Keçir |
 | color-text-brand / color-interactive-primary (teal-400) | color-bg-secondary (gray-800) | 7.86:1 | Keçir | Keçir |
 | color-text-inverse (gray-900) | color-bg-inverse (gray-50) | 17.06:1 | Keçir | Keçir |
@@ -186,18 +187,29 @@ mesajlarında rəngi mətnə deyil, ikona/badge fonuna ver və mətni
 color-text-primary ilə yaz. Mənanı yalnız rənglə ötürmə (WCAG 1.4.1).
 
 #### Qadağan token kombinasiyaları
-color-text-tertiary yalnız color-bg-primary və color-bg-secondary üzərində
-istifadə olunur. color-bg-tertiary üzərində istifadəsi hər iki mode-da
+color-text-secondary və color-text-tertiary mətn kimi yalnız
+color-bg-primary və color-bg-secondary üzərində istifadə olunur.
+color-bg-tertiary üzərində mətn kimi istifadəsi hər iki mode-da
 **qadağandır**, çünki normal mətn üçün 4.5:1-ə çatmır:
 
 | Mətn | Fon | Light | Dark | Status |
 |------|-----|-------|------|--------|
+| color-text-secondary | color-bg-primary | 4.76:1 (gray-500 on white) | 6.96:1 (gray-400 on gray-900) | İcazəlidir |
+| color-text-secondary | color-bg-secondary | 4.55:1 (gray-500 on gray-50) | 5.71:1 (gray-400 on gray-800) | İcazəlidir |
+| color-text-secondary | color-bg-tertiary | 4.34:1 (gray-500 on gray-100) | 4.04:1 (gray-400 on gray-700) | **Mətn kimi qadağandır** |
 | color-text-tertiary | color-bg-primary | 4.76:1 (gray-500 on white) | 6.96:1 (gray-400 on gray-900) | İcazəlidir |
 | color-text-tertiary | color-bg-secondary | 4.55:1 (gray-500 on gray-50) | 5.71:1 (gray-400 on gray-800) | İcazəlidir |
 | color-text-tertiary | color-bg-tertiary | 4.34:1 (gray-500 on gray-100) | 4.04:1 (gray-400 on gray-700) | **Qadağandır** |
 
 color-bg-tertiary üzərində köməkçi mətn lazımdırsa, color-text-primary
 istifadə et və ya mətni color-bg-primary / color-bg-secondary səthinə köçür.
+
+**İkon istisnası (yalnız color-text-secondary):** color-bg-tertiary üzərində
+color-text-secondary qeyri-mətn element (ikon) rəngi kimi istifadə oluna
+bilər. Ona 4.5:1 deyil, WCAG 1.4.11 üzrə **3:1** tələbi tətbiq olunur:
+light 4.34:1, dark 4.04:1, hər ikisi keçir. Məsələn, əməliyyat cədvəlindəki
+istiqamət ikonu (`aria-hidden="true"`, mənası gizli mətnlə ötürülür). Bu
+istisna mətnə, o cümlədən placeholder və etiketlərə aid deyil.
 
 #### Qeyri-mətn elementləri (ikon, fokus halqası, sərhəd)
 Məna daşıyan ikonlar və UI vəziyyət göstəriciləri fonla **3:1** kontrast
@@ -225,7 +237,6 @@ Aşağıdakı token istifadələri hazırda AA-nı keçmir və həll olunana qə
 açıq məsələ kimi qalır:
 - Input "Error text: {color-error}" light mode-da red-500 on white: 3.76:1.
 - Light mode fokus halqası (teal-500 on white): 2.49:1, 3:1 tələbindən aşağı.
-- color-text-secondary on color-bg-tertiary (light): 4.34:1.
 
 Qayda: yeni rəng kombinasiyası əlavə edəndə əvvəlcə kontrastı yoxla,
 sonra istifadə et. Kontrast normal mətn üçün 4.5:1-dən, böyük mətn üçün
