@@ -52,7 +52,7 @@
 }
 
 .table tbody tr:hover {
-  background: var(--color-bg-tertiary);
+  background: var(--color-bg-primary);
 }
 
 .date {
